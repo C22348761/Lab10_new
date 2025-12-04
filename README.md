@@ -31,6 +31,7 @@ This project implements a distributed temperature monitoring system where multip
 - **`sensor.proto`** - Protocol Buffer definition for sensor messages
 - **`sensor_upb2.py`** - MicroPython Protocol Buffer implementation using uprotobuf
 - **`uprotobuf.py`** - Core Protocol Buffer library for MicroPython (required dependency)
+- **`ws2812.py`** - WS2812 RGB LED driver using PIO state machine (for publisher mode)
 
 ## Configuration
 
@@ -80,8 +81,9 @@ message sensorReading {
 
 - `umqtt.robust` - MQTT client library
 - `uprotobuf.py` - Protocol Buffer implementation for MicroPython (included in project)
-- `ws2812` / `ws2182` - LED control (publisher mode)
-- `machine` - Hardware interface (ADC, Pin)
+- `ws2812.py` - WS2812 RGB LED driver using PIO (included in project, used in publisher mode)
+- `machine` - Hardware interface (ADC, Pin, PIO)
+- `rp2` - Raspberry Pi Pico PIO (Programmable I/O) support
 
 ## Installation
 
@@ -94,7 +96,8 @@ message sensorReading {
 ## Notes
 
 - Temperature readings are automatically cleaned up after 10 minutes
-- Publisher uses WS2812 LED for visual feedback
+- Publisher uses WS2812 RGB LED (via `ws2812.py`) for visual feedback - color changes based on temperature (blue to red gradient)
 - Subscriber uses a simple GPIO LED that turns on when temperature > 25°C
 - The system supports multiple publishers with unique publisher IDs
+- WS2812 driver uses PIO state machine for precise timing control
 
