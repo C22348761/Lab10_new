@@ -21,12 +21,16 @@ from uprotobuf import *
 
 @registerMessage
 class TimeMessage(Message):
+    """Protocol Buffer message for timestamp representation."""
     _proto_fields=[
         dict(name='epoch', type=WireType.Varint, subType=VarintSubType.UInt64, fieldType=FieldType.Required, id=1),
     ]
 
 @registerMessage
 class SensorreadingMessage(Message):
+    """Protocol Buffer message for sensor readings.
+    Matches sensor.proto definition: temperature, publisher_id, timestamp.
+    """
     _proto_fields=[
         dict(name='temperature', type=WireType.Bit32, subType=FixedSubType.Float, fieldType=FieldType.Required, id=1),
         dict(name='publisher_id', type=WireType.Length, subType=LengthSubType.String, fieldType=FieldType.Required, id=2),
