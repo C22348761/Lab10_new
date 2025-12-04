@@ -30,6 +30,7 @@ This project implements a distributed temperature monitoring system where multip
 - **`sub22.py`** - Subscriber implementation (receives readings and controls LED)
 - **`sensor.proto`** - Protocol Buffer definition for sensor messages
 - **`sensor_upb2.py`** - MicroPython Protocol Buffer implementation using uprotobuf
+- **`uprotobuf.py`** - Core Protocol Buffer library for MicroPython (required dependency)
 
 ## Configuration
 
@@ -78,7 +79,7 @@ message sensorReading {
 ## Dependencies
 
 - `umqtt.robust` - MQTT client library
-- `uprotobuf` - Protocol Buffer implementation for MicroPython
+- `uprotobuf.py` - Protocol Buffer implementation for MicroPython (included in project)
 - `ws2812` / `ws2182` - LED control (publisher mode)
 - `machine` - Hardware interface (ADC, Pin)
 
