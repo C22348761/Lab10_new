@@ -3,7 +3,7 @@ from network import WLAN
 import time
 from machine import ADC
 import json
-from ws2182 import WS2812
+from ws2812 import WS2812
 import sensor_upb2 as sensor
 # MQTT Configuration
 BROKER_IP = "172.20.10.5"
