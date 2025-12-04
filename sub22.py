@@ -47,13 +47,15 @@ def read_temp():
     return temperature
 
 
+# Simple GPIO LED (not WS2812) for subscriber mode
 led = Pin(OUTPUT_PIN, machine.Pin.OUT)
 
+# Legacy function - not used in subscriber mode (would require WS2812, not GPIO Pin)
 def update_outputs(avg):
     if avg < 0: avg = 0
     if avg > 20: avg = 20
     s = int(avg * 12.75)
-    led.set_pixel(0, s, 0, 255 - s)
+    led.set_pixel(0, s, 0, 255 - s)  # This won't work with Pin object
     led.show()
 
 '''
